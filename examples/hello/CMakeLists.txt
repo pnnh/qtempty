@@ -1,5 +1,3 @@
-
-
 set(PROJECT_SOURCES
         main.cpp
         voronoi.cpp

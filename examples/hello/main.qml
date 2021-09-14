@@ -6,7 +6,7 @@ Window {
     width: 640
     height: 480
     visible: true
-    title: qsTr("He嗯嗯嗯rld")
+    title: "He嗯嗯嗯rld"
 
     Column
         {
@@ -47,6 +47,16 @@ Window {
                         console.log(result)
                     }
                 }
+                TextEdit{
+                        id:textEdit
+                        text:qsTr("enter some text ...")
+                        Rectangle{
+                            anchors.fill: parent
+                            anchors.margins: -5
+                            color: "transparent"
+                            border.width: 1
+                        }
+                    }
         }
 
 

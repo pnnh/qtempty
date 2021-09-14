@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Window
+import QtQuick.Controls
 
 Window {
     width: 640
@@ -9,6 +10,7 @@ Window {
 
     Column
         {
+            id: myColumn
             anchors.fill: parent
             spacing: 10
 
@@ -17,12 +19,6 @@ Window {
                 width: 50
                 font.pointSize: 16
                 elide: Text.ElideNone
-            }
-            Text {
-                text: "abcdefghijklmnopqrstuvwxyz"
-                width: 50
-                font.pointSize: 16
-                elide: Text.ElideLeft
             }
             Text {
                 text: "abcdefghij呵呵呵呵vwxyz"
@@ -36,5 +32,23 @@ Window {
                 font.pointSize: 16
                 elide: Text.ElideRight
             }
+
+            Button{
+                    x:100  // 设置按钮的横坐标
+                    y:100  // 设置纵坐标
+                    text:"我是按钮"   // 按钮文本
+
+                    // 信号槽连接
+                    onClicked: {
+                        console.log("我被点击了")
+
+                        voronoi.test()
+                        var result = voronoi.add(12.3, 3.0)
+                        console.log(result)
+                    }
+                }
         }
+
+
 }
+

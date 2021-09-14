@@ -1,13 +1,10 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-
+#include <QQmlContext>
+#include "voronoi.h"
 
 int main(int argc, char *argv[])
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
-
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
@@ -18,6 +15,13 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
+
+    QScopedPointer<Voronoi> voronoi(new Voronoi);
+    //voronoi.data()指向智能指针中的类对象，如果voronoi是一个普通指针，则voronoi.data()改为voronoi即可
+    engine.rootContext()->setContextProperty("voronoi", voronoi.data());
+
+    if (engine.rootObjects().isEmpty())
+        return -1;
 
     return app.exec();
 }

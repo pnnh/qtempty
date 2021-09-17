@@ -3,16 +3,16 @@
 
 #include <QObject>
 
-class Voronoi : public QObject
-{
-    Q_OBJECT
-public:
-    explicit Voronoi(QObject *parent = nullptr);
+class Voronoi : public QObject {
+ Q_OBJECT
+ public:
+  explicit Voronoi(QObject *parent = nullptr);
 
-    Q_INVOKABLE void test();
-    Q_INVOKABLE double add(double x, double y);
+  Q_INVOKABLE void test();
+  Q_INVOKABLE double add(double x, double y);
+  Q_INVOKABLE QString random(QString text);
 
-signals:
+ signals:
 
 };
 

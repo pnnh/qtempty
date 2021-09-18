@@ -8,12 +8,15 @@ class Voronoi : public QObject {
  public:
   explicit Voronoi(QObject *parent = nullptr);
 
-  Q_INVOKABLE void test();
-  Q_INVOKABLE double add(double x, double y);
-  Q_INVOKABLE QString random(QString text);
+  Q_INVOKABLE QString random(QString text, int length, bool symbol);
 
  signals:
 
+ private:
+  const std::string charsNumber = "0123456789";
+  const std::string charsLetter = "abcdefghijklmnopqrstuvwxyz";
+  const std::string charsUppercaseLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const std::string charsSymbol = "~!@#$%^&*()_+=-[]}{;:,<>?/.";
 };
 
 #endif // VORONOI_H

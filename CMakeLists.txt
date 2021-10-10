@@ -11,7 +11,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 COMPONENTS Core Quick REQUIRED)
 find_package(Qt6 COMPONENTS Core Quick REQUIRED)
 
 add_subdirectory(examples/hello)
+add_subdirectory(examples/color_block)

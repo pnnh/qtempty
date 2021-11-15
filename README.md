@@ -5,7 +5,7 @@ mac下编译测试过
 需指定以下cmake定义变量
 
 ```shell
--GNinja -DCMAKE_PREFIX_PATH=~/Qt/6.1.3/macos/lib/cmake
+-GNinja -DCMAKE_PREFIX_PATH=~/Qt/6.2.0/macos/lib/cmake
 ```
 
 需要安装ninja构建工具，替代make

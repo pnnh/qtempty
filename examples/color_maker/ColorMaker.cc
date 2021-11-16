@@ -5,7 +5,6 @@
 #include "ColorMaker.h"
 #include <QTimerEvent>
 #include <QDateTime>
-#include <QtGlobal>
 #include <QRandomGenerator>
 
 ColorMaker::ColorMaker(QObject *parent)

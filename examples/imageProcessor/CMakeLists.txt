@@ -1,5 +1,5 @@
 set(PROJECT_SOURCES
-        main.cpp imageProcessor.cc
+        main.cpp
         qml.qrc)
 
 qt_add_executable(imageProcessor

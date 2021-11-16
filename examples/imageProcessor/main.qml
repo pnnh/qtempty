@@ -1,13 +1,14 @@
 import QtQuick 2.9
-import QtQuick.Controls 2.3
+import QtQuick.Controls 2.0
 import QtQuick.Window 2.9
-import QtQuick.Dialogs
+import Qt.labs.platform 1.0
 import an.qt.ImageProcessor 1.0
 
 Window {
     objectName: "rootObject";
     width: 640;
     height: 480;
+    visible: true;
     color: "#121212";
 
     BusyIndicator {
@@ -45,7 +46,7 @@ Window {
 
     ImageProcessor {
         id: processor;
-        onFinished: {
+        onFinished: (newFile) => {
             imageViewer.source = "file:///" + newFile;
         }
     }
@@ -55,8 +56,8 @@ Window {
         title: "Please choose a file";
         nameFilters: ["Image Files (*.jpg *.png *.gif)"];
         onAccepted: {
-            console.log("fileDialog", fileDialog.fileUrl);
-            imageViewer.source = fileDialog.fileUrl;
+            console.log("file：", fileDialog.file);
+            imageViewer.source = fileDialog.file;
         }
     }
 
@@ -111,42 +112,42 @@ Window {
             text: "柔化";
             onClicked:  {
                 busy.running = true;
-                processor.process(fileDialog.fileUrl, ImageProcessor.Soften);
+                processor.process(fileDialog.file, ImageProcessor.Soften);
             }
         }
         Button {
             text: "灰度";
             onClicked:  {
                 busy.running = true;
-                processor.process(fileDialog.fileUrl, ImageProcessor.Gray);
+                processor.process(fileDialog.file, ImageProcessor.Gray);
             }
         }
         Button {
             text: "浮雕";
             onClicked:  {
                 busy.running = true;
-                processor.process(fileDialog.fileUrl, ImageProcessor.Emboss);
+                processor.process(fileDialog.file, ImageProcessor.Emboss);
             }
         }
         Button {
             text: "黑白";
             onClicked:  {
                 busy.running = true;
-                processor.process(fileDialog.fileUrl, ImageProcessor.Binarize);
+                processor.process(fileDialog.file, ImageProcessor.Binarize);
             }
         }
         Button {
             text: "底片";
             onClicked:  {
                 busy.running = true;
-                processor.process(fileDialog.fileUrl, ImageProcessor.Negative);
+                processor.process(fileDialog.file, ImageProcessor.Negative);
             }
         }
         Button {
             text: "锐化";
             onClicked:  {
                 busy.running = true;
-                processor.process(fileDialog.fileUrl, ImageProcessor.Sharpen);
+                processor.process(fileDialog.file, ImageProcessor.Sharpen);
             }
         }
     }

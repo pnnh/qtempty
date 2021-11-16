@@ -15,6 +15,7 @@
 #include <QImage>
 #include <QDebug>
 #include <QDir>
+#include <QImageReader>
 
 typedef void (*AlgorithmFunction)(QString sourceFile, QString destFile);
 
@@ -241,6 +242,12 @@ static void _sharpen(QString sourceFile, QString destFile) {
 }
 
 static void _soften(QString sourceFile, QString destFile) {
+//  QFile file(sourceFile);
+//  file.open(QIODevice::ReadOnly);
+//  QByteArray data = file.readAll();
+//  QImage image;
+//  image.loadFromData(data);
+
   QImage image(sourceFile);
   if (image.isNull()) {
     qDebug() << "load " << sourceFile << " failed! ";

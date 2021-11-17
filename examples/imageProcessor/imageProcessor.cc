@@ -242,13 +242,17 @@ static void _sharpen(QString sourceFile, QString destFile) {
 }
 
 static void _soften(QString sourceFile, QString destFile) {
-//  QFile file(sourceFile);
-//  file.open(QIODevice::ReadOnly);
-//  QByteArray data = file.readAll();
-//  QImage image;
-//  image.loadFromData(data);
+  sourceFile = "/Users/Larry/Pictures/devops_bsvalue.png";
+  QFile file(sourceFile);
+  if(!file.open(QIODevice::ReadOnly)) {
+    qDebug() << "打开文件出错：" << file.errorString();
+    return;
+  }
+  QByteArray data = file.readAll();
+  QImage image;
+  image.loadFromData(data);
 
-  QImage image(sourceFile);
+  //QImage image(sourceFile);
   if (image.isNull()) {
     qDebug() << "load " << sourceFile << " failed! ";
     return;
@@ -310,7 +314,21 @@ static void _soften(QString sourceFile, QString destFile) {
       image.setPixel(i, j, qRgb(r, g, b));
     }
   }
-  image.save(destFile);
+
+  QFile targetFile(destFile);
+  //aFile.setFileName(aFileName);
+  if (!targetFile.open(QIODevice::WriteOnly)){
+    qDebug() << "打开目标文件出错：" << file.errorString();
+    return;
+  }
+  //QByteArray imageData = QByteArray::fromRawData((const char*)image.bits(), image.sizeInBytes());
+  //写入文件
+//  if (!targetFile.write(imageData, imageData.length())) {
+//    qDebug() << "写入目标文件出错：" << targetFile.errorString();
+//  }
+  if (!image.save(&targetFile)) {
+    qDebug() << "写入目标文件出错：" << targetFile.errorString();
+  }
 }
 
 static void _emboss(QString sourceFile, QString destFile) {

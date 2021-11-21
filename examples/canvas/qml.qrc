@@ -6,5 +6,8 @@
         <file>draw_complex_path.qml</file>
         <file>draw_text.qml</file>
         <file>draw_image_data.qml</file>
+        <file>draw_transform.qml</file>
+        <file>pic.jpg</file>
+        <file>draw_clip.qml</file>
     </qresource>
 </RCC>

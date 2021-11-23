@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
   QQmlApplicationEngine engine;
 
   // qml文件名称，可以换成其它的qml文件查看不同布局定位器效果
-  QString qmlName = "qrc:/row.qml";
+  QString qmlName = "qrc:/grid.qml";
 
   const QUrl url(qmlName);
 

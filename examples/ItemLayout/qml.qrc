@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>row.qml</file>
-        <file>column.qml</file>
+        <file>grid.qml</file>
     </qresource>
 </RCC>

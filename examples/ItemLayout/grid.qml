@@ -66,29 +66,5 @@ Window {
             text: "A"
             onClicked: setText("A")
         }
-        Button {
-            anchors.rightMargin: 4
-            anchors.bottomMargin: 4
-            text: "A"
-            onClicked: setText("A")
-        }
-        Button {
-            anchors.rightMargin: 4
-            anchors.bottomMargin: 4
-            text: "A"
-            onClicked: setText("A")
-        }
-        Button {
-            anchors.rightMargin: 4
-            anchors.bottomMargin: 4
-            text: "A"
-            onClicked: setText("A")
-        }
-        Button {
-            anchors.rightMargin: 4
-            anchors.bottomMargin: 4
-            text: "A"
-            onClicked: setText("A")
-        }
     }
 }

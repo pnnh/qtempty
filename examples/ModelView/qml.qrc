@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>phone_list_simple.qml</file>
+        <file>phone_list_header.qml</file>
+    </qresource>
+</RCC>

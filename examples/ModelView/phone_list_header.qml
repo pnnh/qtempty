@@ -100,11 +100,12 @@ Window {
             property alias text: txt.text;
             signal clean();
             signal add();
+            signal moveDown();
 
             Text {
                 id: txt;
                 anchors.left: parent.left;
-                anchors.top: parennt.top;
+                anchors.top: parent.top;
                 anchors.bottom: parent.bottom;
                 width: parent.width;
                 font.italic: true;
@@ -126,6 +127,14 @@ Window {
                 anchors.verticalCenter: parent.verticalCenter;
                 text: "Add";
                 onClicked: footerRootItem.add();
+            }
+            Button {
+                id: moveDown;
+                anchors.right: addOne.left;
+                anchors.rightMargin: 4;
+                anchors.verticalCenter: parent.verticalCenter;
+                text: "Down";
+                onClicked: footerRootItem.moveDown();
             }
         }
     }
@@ -197,15 +206,75 @@ Window {
                 listView.footerItem.text = " ";
             }
         }
-        function addOne() {
-            model.append({
-                         "name": "MX3", "cost": "1799", "manufacturer": "MeiZu"
-                         });
+        add: Transition {
+            ParallelAnimation {
+                NumberAnimation {
+                    property: "opacity";
+                    from: 0;
+                    to: 1.0;
+                    duration: 1000;
+                }
+                NumberAnimation {
+                    property: "y";
+                    from: 0;
+                    duration: 1000;
+                }
+            }
         }
+        displaced: Transition {
+            SpringAnimation {
+                property: "y";
+                spring: 3;
+                damping: 0.1;
+                epsilon: 0.25;
+            }
+        }
+        remove: Transition {
+            SequentialAnimation {
+                NumberAnimation {
+                    properties: "y";
+                    to: 0;
+                    duration: 600;
+                }
+                NumberAnimation {
+                    property: "opacity";
+                    to: 0;
+                    duration: 400;
+                }
+            }
+        }
+        move: Transition {
+            NumberAnimation {
+                property: "y";
+                duration: 700;
+                easing.type: Easing.InQuart;
+            }
+        }
+        populate: Transition {
+            NumberAnimation {
+                property: "opacity";
+                from: 0;
+                to: 1.0;
+                duration: 1000;
+            }
+        }
+
+        function addOne() {
+            model.insert(Math.round(Math.random() * model.count),
+                         { "name": "MX3", "cost": "1799", "manufacturer": "MeiZu" });
+        }
+
+        function moveDown() {
+            if (currentIndex + 1 < model.count) {
+                model.move(currentIndex, currentIndex + 1, 1);
+            }
+        }
+
 
         Component.onCompleted: {
             listView.footerItem.clean.connect(listView.model.clear);
             listView.footerItem.add.connect(listView.addOne);
+            listView.footerItem.moveDown.connect(listView.moveDown);
         }
     }
 }

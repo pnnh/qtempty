@@ -186,6 +186,20 @@ Window {
         }
     }
 
+    Component {
+        id: sectionHeader;
+        Rectangle {
+            width: parent.width;
+            height: childrenRect.height;
+            color: "lightsteelblue";
+            Text {
+                text: section;
+                font.bold: true;
+                font.pixelSize: 20;
+            }
+        }
+    }
+
     ListView {
         id: listView;
         anchors.fill: parent;
@@ -197,6 +211,9 @@ Window {
         highlight: Rectangle {
             color: "lightblue";
         }
+        section.property: "manufacturer";
+        section.criteria: ViewSection.FullString;
+        section.delegate: sectionHeader;
         onCurrentIndexChanged: {
             if (listView.currentIndex >= 0) {
                 var data = listView.model.get(listView.currentIndex);

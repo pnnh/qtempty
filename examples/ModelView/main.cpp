@@ -2,12 +2,14 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QKeyEvent>
+#include "videoListModel.h"
 
 int main(int argc, char *argv[]) {
   QGuiApplication app(argc, argv);
+  qmlRegisterType<VideoListModel>("an.qt.CModel", 1, 0, "VideoListModel");
 
   QQmlApplicationEngine engine;
-  const QUrl url(QStringLiteral("qrc:/phone_list_header.qml"));
+  const QUrl url(QStringLiteral("qrc:/main.qml"));
 
   engine.load(url);
 

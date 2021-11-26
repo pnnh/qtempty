@@ -8,7 +8,7 @@
 #include <QAbstractListModel>
 
 class VideoListModelPrivate;
-class VideoListModel {
+class VideoListModel : public QAbstractListModel {
  Q_OBJECT
   Q_PROPERTY(QString source READ source WRITE setSource)
  public:

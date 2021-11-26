@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
+        <file>main.qml</file>
         <file>phone_list_simple.qml</file>
         <file>phone_list_header.qml</file>
         <file>pic.jpg</file>

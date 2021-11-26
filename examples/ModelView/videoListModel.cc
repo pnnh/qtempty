@@ -7,7 +7,7 @@
 #include <QVector>
 #include <QFile>
 #include <QDebug>
-#include <QStringRef>
+#include <QStringView>
 
 typedef QVector<QString> VideoData;
 class VideoListModelPrivate {
@@ -45,12 +45,12 @@ class VideoListModelPrivate {
       return;
     }
     reader.setDevice(&file);
-    QStringRef elementName;
+    QString elementName;
     VideoData *video;
     while (!reader.atEnd()) {
       reader.readNext();
       if (reader.isStartElement()) {
-        elementName = reader.name();
+        elementName = reader.name().toString();
         if (elementName == "video") {
           video = new VideoData();
           QXmlStreamAttributes attrs = reader.attributes();
@@ -67,7 +67,7 @@ class VideoListModelPrivate {
           video->append(reader.readElementText());
         }
       } else if (reader.isEndElement()) {
-        elementName = reader.name();
+        elementName = reader.name().toString();
         if (elementName == "video") {
           m_videos.append(video);
           video = 0;
@@ -138,7 +138,7 @@ void VideoListModel::reload() {
   beginResetModel();
   m_dptr->reset();
   m_dptr->load();
-  enResetModel();
+  endResetModel();
 }
 void VideoListModel::remove(int index) {
   beginRemoveRows(QModelIndex(), index, index);

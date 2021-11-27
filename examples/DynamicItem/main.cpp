@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
   QGuiApplication app(argc, argv);
   QQmlApplicationEngine engine;
 
-  QString qmlName = "qrc:/dynamic_component.qml";
+  QString qmlName = "qrc:/qt_create_component.qml";
 
   const QUrl url(qmlName);
 

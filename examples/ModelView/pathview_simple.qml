@@ -61,6 +61,7 @@ Window {
                     x: root.width / 2 - 40;
                     y: 100;
                 }
+                PathPercent { value: 0.28; }
                 PathAttribute { name: "zOrder"; value: 10; }
                 PathAttribute { name: "itemAlpha"; value: 0.8; }
                 PathAttribute { name: "itemScale"; value: 1.2; }

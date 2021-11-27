@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
   qmlRegisterType<VideoListModel>("an.qt.CModel", 1, 0, "VideoListModel");
 
   QQmlApplicationEngine engine;
-  const QUrl url(QStringLiteral("qrc:/main.qml"));
+  const QUrl url(QStringLiteral("qrc:/pathview_simple.qml"));
 
   engine.load(url);
 
